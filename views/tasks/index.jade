@@ -1,0 +1,26 @@
+include layout
+h1 your tasks
+-if(typeof message != 'undefined')
+  include ../mixins/flash_message
+  mixin flash_message(message)
+// |!{message}
+  #{errors} 
+p
+ a(href='/tasks/new',class='btn primary') add a task
+
+-if(docs.length)
+ table
+  tr
+   th task
+    each task in docs
+     tr
+      td #{task.name}
+      td= task.content
+      td
+       a.btn(href='/tasks/#{task.id}/edit') edit
+      td
+       form(method='post',action='/tasks/'+task.id)
+        input(name='_method',value='DELETE',type='hidden')
+        button.btn(type='submit') delete
+-else
+ p you don't have any tasks!

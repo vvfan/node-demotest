@@ -1,0 +1,10 @@
+mixin flash_message(message)
+ -if(message.warning)
+   div(class="alert alert-error")
+    -if(message.warning.errors.name)
+     p= message.warning.errors.name.message
+    -else
+     p= message.warning.errors.content.message
+ -if(message.info)
+   div.alert
+    p= message.info

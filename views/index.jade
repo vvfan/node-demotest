@@ -1,0 +1,51 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  p #{content}
+
+  section#wrapper
+  p i am a p
+  -var foo='fanfan'
+  p echo #{foo}
+  ul
+   -var users = ['name1','name2','name3','name4']
+   -each user in users
+    li #{user}
+  section.content
+   p this is a p
+  -var foo1=1
+  -if (foo1==10)
+   p this is a true
+  -else
+   p this is a false
+
+  script
+   alert('jade')
+  
+
+  mixin users(users)
+   ul 
+    -each user in users
+     li= user
+  -usersa=['n1','n2','n3','n4']
+  mixin users(usersa)
+  mixin users(users)
+
+  h2 form example
+  form(method='post',action='/')
+   fieldset
+    legend add a user
+    p
+     label first name
+     input(name='user[first_name]')
+    p
+     label last name
+     input(name='user[surename]')
+    p
+     input(type='submit',value='save')
+  
+
+
+  include include/footer

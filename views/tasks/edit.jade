@@ -1,0 +1,18 @@
+include layout
+h1 edit task view
+form.form-horizontal(method='post',action='/tasks/'+docs.id)
+ input(name='_method',value='PUT',type='hidden')
+ fieldset
+  legend editing task
+  div.clearfix
+  div.control-group
+   label.control-label task-name
+   div.controls
+    input(name='task[name]',class='xlarge',value="#{docs.name}")
+  div.control-group
+   label.control-label task-content
+   div.controls
+    input(name='task[content]',class='xlarge',value="#{docs.content}")    
+  div.form-actions
+   input(type='submit',value='save',class='btn primary')
+   button(type='reset',class='btn') cancel

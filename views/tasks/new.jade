@@ -1,0 +1,20 @@
+include layout
+h1 new task view
+-if(typeof message != 'undefined')
+  include ../mixins/flash_message
+  mixin flash_message(message)
+form.form-horizontal(method='post',action='/tasks')
+ fieldset 
+  legend add a task
+  div.clearfix
+  div.control-group
+   label.control-label task-name
+   div.controls
+    input(name='task[name]',class='xlarge')
+  div.control-group
+   label.control-label task-content
+   div.controls
+    input(name='task[content]',class='xlarge')
+  div.form-actions
+   input(type='submit',value='save',class='btn primary')
+   button(type='reset',class='btn') cancel
